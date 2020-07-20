@@ -1,0 +1,22 @@
+#server:
+#  port: 8071
+#spring:
+#  application:
+#    name: service-user
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/shop?characterEncoding=UTF-8
+#    username: root
+#    password: 111111
+#  jpa:
+#    properties:
+#      hibernate:
+#        hbm2ddl:
+#          auto: update
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#rocketmq:
+#  name-server: 192.168.18.128:9876
