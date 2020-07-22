@@ -5,12 +5,31 @@ spring:
     name: api-gateway
 
   cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848  # 注册到nacos
+
     gateway:
+      discovery:
+        locator:
+          enabled: true  # 可以获取nacos上的其他服务信息
       routes: # 路由数组[路由 请求满足什么样的条件，转发到某一个微服务]
-        - id: product_route # 当前路由发的标识
-          uri: http://127.0.0.1:8082 # 要转发到的地址
+        - id: product_route # 当前路由的标识
+          uri: lb://service-product # 要转发到的地址 lb是负载均衡，后面是微服务在nacos上的标识
           order: 1 # 路由的优先级，数字越少，代表优先级越高
           predicates: # 断言(条件判断 boolean类型，转发请求要满足的条件)
             - Path=/product-serv/** # 当请求路径满足Path指定的规则时，此路由信息才会正常转发
+            # - Age=18,60
+
+          filters: # 过滤器(在请求传递过程中，对请求做一些手脚)
+            - StripPrefix=1
+            # - Log=true,false
+        - id: order_route # 当前路由的标识
+          uri: lb://service-order # 要转发到的地址 lb是负载均衡，后面是微服务在nacos上的标识
+          order: 1 # 路由的优先级，数字越少，代表优先级越高
+          predicates: # 断言(条件判断 boolean类型，转发请求要满足的条件)
+            - Path=/order-serv/** # 当请求路径满足Path指定的规则时，此路由信息才会正常转发
+            # - Age=18,60
+
           filters: # 过滤器(在请求传递过程中，对请求做一些手脚)
             - StripPrefix=1

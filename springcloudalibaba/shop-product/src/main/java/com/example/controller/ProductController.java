@@ -25,9 +25,9 @@ public class ProductController {
     }
     //扣库存
     @RequestMapping("/product/reduceInventory")
-    public void reduceInventory(@RequestParam("pid") Integer pid,
+    public String reduceInventory(@RequestParam("pid") Integer pid,
                                 @RequestParam("number") Integer number){
         productService.reduceInventory(pid,number);
-
+        return "reduceInventory success";
     }
 }

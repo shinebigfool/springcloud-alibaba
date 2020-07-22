@@ -1,0 +1,6 @@
+com\example\domain\Product.class
+com\example\domain\Order.class
+com\example\domain\Payment.class
+com\example\domain\CommonResult.class
+com\example\domain\TxLog.class
+com\example\domain\User.class

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class TestService {
     //blockHandler  sentinel异常
     //fallback
-    @SentinelResource(value = "message",blockHandler = "blockHandler")
+    @SentinelResource(value = "message",blockHandler = "blockHandler",fallback = "fallBack")
     public String message(){
         return "message";
     }

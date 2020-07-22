@@ -1,0 +1,5 @@
+com\example\controller\ProductController.class
+com\example\service\ProductService.class
+com\example\dao\ProductDao.class
+com\example\service\impl\ProductServiceImpl.class
+com\example\ProductApplication.class

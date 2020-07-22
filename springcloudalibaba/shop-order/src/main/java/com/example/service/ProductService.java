@@ -15,6 +15,6 @@ public interface ProductService {
     Product findByPid(@PathVariable Integer pid);
     //扣库存
     @RequestMapping("/product/reduceInventory")
-    void reduceInventory(@RequestParam("pid") Integer pid,
+    String reduceInventory(@RequestParam("pid") Integer pid,
                          @RequestParam("number") Integer number);
 }
