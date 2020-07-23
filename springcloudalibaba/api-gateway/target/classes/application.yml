@@ -23,4 +23,13 @@ spring:
 
           filters: # 过滤器(在请求传递过程中，对请求做一些手脚)
             - StripPrefix=1
-            - Log=true,false
+            # - Log=true,false
+        - id: order_route # 当前路由的标识
+          uri: lb://service-order # 要转发到的地址 lb是负载均衡，后面是微服务在nacos上的标识
+          order: 1 # 路由的优先级，数字越少，代表优先级越高
+          predicates: # 断言(条件判断 boolean类型，转发请求要满足的条件)
+            - Path=/order-serv/** # 当请求路径满足Path指定的规则时，此路由信息才会正常转发
+            # - Age=18,60
+
+          filters: # 过滤器(在请求传递过程中，对请求做一些手脚)
+            - StripPrefix=1
